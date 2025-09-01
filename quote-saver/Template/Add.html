@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Manager</title>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}">
+
+  <!-- Font Awesome for icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <!-- Back Button (takes user to homepage/index) -->
+    <a href="{{ url_for('index') }}">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <!-- "Add" Button (submits the form using JavaScript) -->
+    <button id="add"><b>Add</b></button>
+  </header>
+  
+  <!-- Main Form Section -->
+  <main>
+    <!-- Form that sends data to backend route add_data -->
+    <form id="addForm" action="{{ url_for('add_data') }}" method="POST">
+      
+      <!-- Author input (required) -->
+      <textarea placeholder="Enter author" id="author" name="author" required></textarea>
+      
+      <!-- Quote input (required) -->
+      <textarea placeholder="Enter quote" id="quote" name="quote" required></textarea>
+    </form>
+  </main>
+  
+  <!-- JavaScript to submit the form when "Add" button is clicked -->
+  <script>
+    document.getElementById("add").addEventListener("click", () => {
+      // This will trigger the form submission
+      document.getElementById("addForm").submit();
+    });
+  </script>
+</body>
+</html>
