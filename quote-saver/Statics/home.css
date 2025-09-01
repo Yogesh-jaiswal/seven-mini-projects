@@ -1,0 +1,50 @@
+/* =========================
+   Main container styling
+   ========================= */
+main {
+  position: relative;              /* Allows absolute positioning of children */
+  display: flex;                   /* Flexbox layout */
+  background: #fdf6ec;             /* Light background color */
+  align-items: center;             /* Center children vertically */
+  justify-content: space-evenly;   /* Even spacing between children */
+  flex-direction: column;          /* Stack children in a column */
+  width: 100%;                     /* Full width */
+  height: 80%;                     /* 80% of parent height */
+}
+
+/* =========================
+   Quote text inside main
+   ========================= */
+main p {
+  position: absolute;              /* Positioned relative to <main> */
+  top: 50px;                       /* 50px from the top */
+  width: 90%;                      /* Responsive width */
+  font-size: 30px;                 /* Large readable font size */
+  overflow-wrap: break-word;       /* Ensure text wraps inside box */
+  display: flex;                   /* Center text */
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   Floating Add button
+   ========================= */
+main button {
+  position: absolute;              /* Positioned inside <main> */
+  bottom: 20px;                    /* 20px above bottom */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;              /* Makes it circular */
+  font-size: 30px;                 /* Large icon/text size */
+  background-color: #009688;       /* Teal background */
+  text-align: center;
+  color: #000;                     /* Black text/icon */
+  text-decoration: none;           /* No underline */
+}
+
+/* =========================
+   Home background styling
+   ========================= */
+.home {
+  background: #FFDE04;             /* Bright yellow background */
+}
