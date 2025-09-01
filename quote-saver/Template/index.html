@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!-- index.html extends the base layout from base.html -->
+
+{% block extra_css %}
+<!-- Extra CSS specific to the home page -->
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+  <p><b>
+    <!-- If there is a result (quote available), display it -->
+    {% if result %}
+        <i>❝{{ result[0] }}❞ — {{ result[1] }}</i>
+    {% else %}
+        <!-- If no quote exists, show this fallback message -->
+        No quote found! <br> please add one
+    {% endif %}
+  </b></p>
+
+  <!-- Floating add button: redirects to add_data route -->
+  <button>
+    <a href="{{ url_for('add_data') }}">
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </button>
+</main>
+{% endblock %}
