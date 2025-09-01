@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+<!-- data.html extends the base layout from base.html -->
+
+{% block extra_css %}
+<!-- Extra CSS specific to the data page -->
+<link rel="stylesheet" href="{{ url_for('static', filename='data.css') }}">
+{% endblock %}
+
+{% block body %}
+<main class="table-responsive">
+  
+  <!-- Check if there are results (quotes stored in DB) -->
+  {% if results %}
+    <!-- Table to display all stored quotes -->
+    <table class="table table-hover text-center align-middle">
+      <tbody>
+        <!-- Loop through each row in results -->
+        {% for row in results %}
+          <tr>
+            <!-- Quote text -->
+            <td>{{ row[2] }}</td>
+            <!-- Author name -->
+            <td>{{ row[1] }}</td>
+            <!-- Delete button (trash icon), linked by row ID -->
+            <td>
+              <a href="{{ url_for('delete_data', id=row[0]) }}">
+                <i class="fa-solid fa-trash text-danger"></i>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
+  {% else %}
+    <!-- Message when no data is available -->
+    <div class="no-data">
+      <p><b>No data found!</b></p>
+    </div>
+  {% endif %}
+
+</main>
+{% endblock %}
