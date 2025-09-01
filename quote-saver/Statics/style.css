@@ -1,0 +1,65 @@
+/* ===============================
+   Global Reset and Typography
+   =============================== */
+* {
+  font-family: Georgia, Arial, sans-serif; /* Fallback font stack */
+  margin: 0;                              /* Reset default margin */
+  padding: 0;                             /* Reset default padding */
+  box-sizing: border-box;                 /* Include padding/border in element’s total size */
+}
+
+/* ===============================
+   Body Layout
+   =============================== */
+body {
+  height: 100vh;                /* Full viewport height */
+  display: flex;                /* Flexbox for layout */
+  align-items: center;          /* Center items horizontally */
+  flex-direction: column;       /* Stack children vertically */
+}
+
+/* ===============================
+   Header Section
+   =============================== */
+header {
+  width: 100%;                  /* Full width */
+  min-height: 60px;             /* Minimum header height */
+  background-color: #f4c542;    /* Bright yellow background */
+  display: flex;                /* Flexbox for content alignment */
+  justify-content: center;      /* Center content horizontally */
+  align-items: center;          /* Center content vertically */
+  font-size: 36px;              /* Large title text */
+  font-weight: bold;            /* Bold header text */
+}
+
+/* ===============================
+   Footer Section
+   =============================== */
+footer {
+  display: flex;                /* Flexbox for footer layout */
+  justify-content: space-between; /* Spread items left/right */
+  align-items: center;          /* Vertically center content */
+  width: 100%;                  /* Full width */
+  min-height: 60px;             /* Minimum footer height */
+  background-color: #f4c542;    /* Match header color */
+  font-size: 30px;              /* Large footer text/icons */
+}
+
+/* ===============================
+   Footer Icons
+   =============================== */
+footer i {
+  width: 60px;                  /* Fixed icon container width */
+  height: 50px;                 /* Fixed icon container height */
+  margin: 0 50px;               /* Spacing on left/right */
+  border-radius: 4px;           /* Rounded corners */
+  text-align: center;           /* Center icon horizontally */
+  padding: 8px;                 /* Inner spacing */
+}
+
+/* ===============================
+   General Icon Styling
+   =============================== */
+i {
+  color: #000;                  /* Black icon color */
+}
