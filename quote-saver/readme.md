@@ -57,7 +57,7 @@ It allows users to add, view, and manage quotes with authors.
 
 ---
 
-##🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 - Python (Flask)
 - SQLite (Database)
@@ -69,7 +69,7 @@ It allows users to add, view, and manage quotes with authors.
 
 ---
 
-##📖 Notes
+## 📖 Notes
 
 - Designed primarily for mobile phone usage.
 - Can be extended later for tablet or desktop UI.
@@ -79,7 +79,7 @@ It allows users to add, view, and manage quotes with authors.
 
 ---
 
-##👨‍💻 Author
+## 👨‍💻 Author
 
 Developed by Yogesh Jaiswal as a small project for learning and practicing Flask + front-end development.
 
