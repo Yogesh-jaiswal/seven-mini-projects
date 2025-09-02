@@ -80,7 +80,7 @@ This project helps users add, view, and delete tasks with optional descriptions 
 
 ---
 
-👨‍💻 Author
+##👨‍💻 Author
 
 Developed by Yogesh Jaiswal as a small project for learning and practicing Flask + front-end development.
 
