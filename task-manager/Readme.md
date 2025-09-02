@@ -43,13 +43,15 @@ This project helps users add, view, and delete tasks with optional descriptions 
 2. Install Flask if not already installed:  
    ```bash
    pip install flask
+   ```
 3. Run the Flask app:
    ```bash
    python app.py
+   ```
 
 
 4. Open the app in your browser at:
-   ```
+   ```bash
    http://127.0.0.1:5000/
    ```
 
