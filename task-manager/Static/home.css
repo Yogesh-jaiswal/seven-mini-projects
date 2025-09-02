@@ -1,0 +1,182 @@
+/* Reset + type */
+* {
+  font-family: Georgia, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout */
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Header (keep as you had) */
+header {
+  width: 100%;
+  min-height: 60px;
+  background-color: #f4c542;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Main */
+main {
+  position: relative;
+  display: flex;
+  background: #fff;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; /* fill remaining space */
+  padding-bottom: 90px; /* keep content clear of footer on mobile */
+}
+
+/* Task table */
+.task-table td {
+  font-size: 30px;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.task-table td.task-text {
+  max-width: 60px;       /* adjust based on your layout */
+  white-space: nowrap;    /* prevent text wrapping */
+  overflow: hidden;       /* hide overflowing text */
+  text-overflow: ellipsis; /* show ... */
+}
+
+.icon-cell {
+  width: 44px; /* comfy tap target */
+}
+
+.task-text {
+  text-align: left;
+  word-break: break-word;
+}
+
+.task-text span{
+  margin-left: 10px;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+/* No data state */
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.no-data p {
+  font-size: 28px;
+  color: #333;
+}
+
+/* Floating Add Button */
+.add-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #6200ee;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 3;
+}
+.add-btn:hover { background: #4b00c1; }
+
+/* Icons */
+main i { 
+  text-align: center;
+  font-size: 30px;  /* a bit smaller fits rows better on phones */
+  padding: 8px;
+}
+
+.text-danger { color: #DA2C43; }
+.info-btn { color: #007bff; }
+
+/* ✅ Checkbox */
+input[type="checkbox"].complete-btn {
+  transform: scale(1.4);     /* visually larger on mobile */
+  accent-color: #2ecc71;     /* green when checked (modern browsers) */
+  width: 20px;               /* fix the typo and keep reasonable size */
+  height: 20px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* Table cells */
+main td { text-align: center; }
+
+tr { background-color: #fdf6ec; }
+
+/* Footer (keep as you had) */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  background-color: #f4c542;
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Info popup + backdrop (mobile friendly) */
+#backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 4;
+}
+#backdrop.hidden { display: none; }
+
+.info-box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 92vw;
+  width: 92vw;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px 16px 18px;
+  z-index: 5;
+  box-shadow: 0 12px 28px rgba(0,0,0,.25);
+}
+.info-box.hidden { display: none; }
+.info-box h4 { margin: 0 0 8px 0; font-size: 18px; color: #222; }
+.info-box p { margin: 6px 0; font-size: 15px; color: #333; }
+
+.info-close {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  font-size: 22px;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
