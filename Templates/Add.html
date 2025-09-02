@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+<!-- index.html extends the base layout from base.html -->
+
+{% block extra_css %}
+<!-- CSS styling specific to the home page -->
+<link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- Header Section -->
+ <header>
+    <!-- Back Button (takes user to homepage/index) -->
+    <a href="{{ url_for('index') }}">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <!-- "Add" Button (submits the form using JavaScript) -->
+    <button id="add"><b>Add</b></button>
+</header>
+  
+  <!-- Main Form Section -->
+<main>
+    <!-- Form that sends data to backend route add_data -->
+    <form id="addForm" action="{{ url_for('add') }}" method="POST">
+      
+      <!-- Author input (required) -->
+      <textarea placeholder="Enter task" id="task" name="task" required></textarea>
+      
+      <!-- Quote input (required) -->
+      <textarea placeholder="Enter description (optional)" id="description" name="description"></textarea>
+      
+      <div class="date-container">
+        <h2>Select Due Date (optional)</h2>
+        <input type="date" id="task-date" name="date">
+      </div>
+    </form>
+</main>
+  
+  <!-- JavaScript to submit the form when "Add" button is clicked -->
+<script>
+  document.getElementById("add").addEventListener("click", () => {
+    // This will trigger the form submission
+    document.getElementById("addForm").submit();
+  });
+
+  // Set default date to today
+  const dateInput = document.getElementById("task-date");
+  if (dateInput) {
+    const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+    dateInput.value = today;
+  }
+</script>
+
+{% endblock %}
