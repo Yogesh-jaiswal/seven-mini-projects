@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page metadata -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Browser tab title -->
+  <title>Weather app</title>
+  
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+  <!-- Font Awesome (for search icon) -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  
+  <!-- App Header -->
+  <header> ☁️ Weather App </header>
+  
+  <!-- Main content (weather card + search) -->
+  <main>
+    <!-- Search bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Enter city name" class="bar">
+      <div class="icon"><i class="fa-solid fa-search"></i></div>
+    </div>
+
+    <!-- Weather info card -->
+    <div id="weather-card">
+      <!-- Card header: icon + city name -->
+      <span id="header">
+        <img 
+          src="https://openweathermap.org/img/wn/01d@2x.png"
+          id="weather-icon" 
+          alt="Weather Icon" 
+          style="width:40px; vertical-align:middle;"
+        >
+        <span id="city-name">New York</span>
+      </span>
+
+      <hr>
+      <!-- Temperature row -->
+      <span id="temperature">
+        <p id="tag">Temp:</p><p id="value">27°C</p>
+      </span>
+
+      <hr>
+      <!-- Condition row -->
+      <span id="condition">
+        <p id="tag">Condition:</p><p id="value">Clear Sky</p>
+      </span>
+
+      <hr>
+      <!-- Humidity row -->
+      <span id="humidity">
+        <p id="tag">Humidity:</p><p id="value">55%</p>
+      </span>
+
+      <hr>
+      <!-- Wind row -->
+      <span id="wind">
+        <p id="tag">Wind:</p><p id="value">12 km/h</p>
+      </span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer><b>Powered by OpenWeatherMap API</b></footer>
+
+  <!-- JS script (Flask-served) -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
