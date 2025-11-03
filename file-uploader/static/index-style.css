@@ -1,0 +1,169 @@
+/* ============================================
+   MAIN LAYOUT STYLES
+   ============================================ */
+main {
+  /* Use flexbox to center content both vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Set height relative to the viewport */
+  height: 80%;
+}
+
+/* ============================================
+   FORM STYLING
+   ============================================ */
+form {
+  /* Take up most of the available width with margin for spacing */
+  width: 90%;
+  margin-top: 70px;
+}
+
+/* ============================================
+   UPLOAD BOX SECTION
+   ============================================ */
+.upload-box {
+  /* Center the box and add padding for inner spacing */
+  margin: 20px auto;
+  padding: 30px;
+
+  /* Restrict width and apply a dashed border to indicate upload area */
+  width: 90%;
+  max-width: 400px;
+  border: 4px dashed #30363d;
+  border-radius: 10px;
+
+  /* Center text and apply background color for contrast */
+  text-align: center;
+  background: #161b22;
+}
+
+/* Upload icon inside the box */
+.upload-box i {
+  font-size: 40px;
+  color: #238636;
+  margin-bottom: 10px;
+}
+
+/* Descriptive text inside the upload box */
+.upload-box p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Additional instruction text */
+.upload-box span {
+  display: block;
+  margin: 10px 0;
+  color: #777;
+}
+
+/* ============================================
+   BROWSE BUTTON STYLES
+   ============================================ */
+.browse-btn {
+  /* Make it look like a clickable button */
+  display: inline-block;
+  padding: 10px 20px;
+  background: #238636;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Hover effect for better user feedback */
+.browse-btn:hover {
+  background: #2ea043;
+}
+
+/* ============================================
+   TOAST NOTIFICATION STYLES
+   ============================================ */
+.toast {
+  /* Fixed dimensions and dark background */
+  width: 350px;
+  height: 275px;
+  background: #0d1117;
+  border: 2px solid #30363d;
+  border-radius: 8px;
+
+  /* Flexbox for vertical stacking and centering */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Hidden by default until activated */
+  display: none;
+
+  /* Spacing between inner elements */
+  gap: 20px;
+
+  /* Center on screen using fixed positioning and transform */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Class that makes the toast visible */
+.show {
+  display: flex;
+}
+
+/* ============================================
+   TOAST CONTENT STYLES
+   ============================================ */
+
+/* Toast image (e.g., success or warning icon) */
+#toast-img {
+  width: 150px;
+  padding-right: 20px;
+}
+
+/* Animate the warning icon to bounce repeatedly */
+.warning #toast-img {
+  animation: bounce 1.8s infinite;
+}
+
+/* Toast text styling */
+#toast-text {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Toast button styling */
+#toast-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+/* Success toast button (green) */
+.success #toast-btn {
+  background: #238636;
+  color: #fff;
+}
+
+/* Warning toast button (yellow) */
+.warning #toast-btn {
+  background: #FFD806;
+  color: #000;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Bouncing animation for warning icons */
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}

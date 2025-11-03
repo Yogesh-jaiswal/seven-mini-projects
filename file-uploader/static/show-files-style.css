@@ -1,0 +1,254 @@
+/* ============================================
+   MAIN LAYOUT STYLES
+   ============================================ */
+main {
+  /* Use flexbox to center content both vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Define height relative to the viewport */
+  height: 80%;
+}
+
+/* ============================================
+   TABLE STRUCTURE
+   ============================================ */
+.table {
+  /* Make table take full width and center it */
+  width: 100%;
+  margin: 0 auto;
+
+  /* Remove spacing between table cells */
+  border-collapse: collapse;
+  border-spacing: 0 10px;
+
+  /* Fix table position on the screen */
+  position: fixed;
+  top: 70px;
+}
+
+/* Each table row styled as a flex container */
+.table tbody tr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Define row height and add transition for hover effect */
+  height: 60px;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+/* Hover state for table rows */
+.table tbody tr:hover {
+  background: #1f242b; /* Slightly darker background */
+  transform: translateY(-1px); /* Lift effect */
+}
+
+/* Table cell base styling */
+.table td {
+  /* Padding and text alignment */
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: middle;
+
+  /* No borders or background */
+  border: none;
+  background: none;
+
+  /* Reset padding for flex alignment */
+  padding: 0;
+}
+
+/* Fixed width for file-card cell (first column) */
+.table td:first-child {
+  flex: 0 0 60px;
+}
+
+/* Expandable file-name cell (second column) */
+.table td:nth-child(2) {
+  flex: 1;
+  padding: 0 10px;
+  overflow: hidden; /* Hide overflowed text */
+}
+
+/* ============================================
+   FILE CARD (ICON / IMAGE)
+   ============================================ */
+.file-card {
+  /* Square container for image or icon */
+  height: 45px;
+  width: 45px;
+
+  /* Background and border */
+  background: #161b22;
+  border: 1.5px solid #30363d;
+  border-radius: 6px;
+
+  /* Center image/icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Add spacing around the card */
+  margin: 10px;
+}
+
+/* Image inside file card */
+.file-card img {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  border: 1.5px solid #30363d;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Placeholder styling when no image is present */
+.placeholder p {
+  color: #161b22;
+  border-radius: 5%;
+  font-size: 12.5px;
+
+  /* Center text/icon */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Fit content width and apply slight padding */
+  width: fit-content;
+  padding-inline: 0.5px;
+}
+
+/* Placeholder icon */
+.placeholder i {
+  font-size: 20px;
+}
+
+/* ============================================
+   FILE NAME & DETAILS
+   ============================================ */
+.file-name {
+  /* Stack filename and details vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+
+  /* Fill available cell space */
+  width: 100%;
+  height: 100%;
+
+  /* Remove underline from links */
+  text-decoration: none;
+}
+
+/* File name text */
+.file-name span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #e6edf3;
+
+  /* Prevent long filenames from overflowing */
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* File details text (e.g., date, type) */
+.file-name p {
+  font-size: 13px;
+  color: #8b949e;
+}
+
+/* ============================================
+   OPTIONS CELL & DROPDOWN BUTTON
+   ============================================ */
+.options-cell {
+  /* Fixed width and right-aligned */
+  flex: 0 0 40px;
+  padding-right: 20px;
+  text-align: right;
+  width: 40px;
+
+  /* For positioning dropdown menu */
+  position: relative;
+}
+
+/* Three-dot button styling */
+.dots-btn {
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 20px;
+  cursor: pointer;
+
+  /* Padding and rounded corners */
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  /* Smooth hover transition */
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect for dots button */
+.dots-btn:hover {
+  background: #21262d;
+  color: #e6edf3;
+}
+
+/* Dropdown container positioning */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden dropdown menu (shown on interaction) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 28px;
+
+  /* Dark background and subtle shadow */
+  background-color: #161b22;
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 150px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown item (individual option) */
+.dropdown-item {
+  display: block;
+  color: #fff;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 16px;
+
+  /* Smooth hover transition */
+  transition: background 0.2s ease;
+}
+
+/* Hover effect for dropdown item */
+.dropdown-item:hover {
+  background: #263340;
+  color: white;
+}
+
+/* ============================================
+   NO DATA STATE
+   ============================================ */
+.no-data {
+  /* Center the text and style container */
+  text-align: center;
+  padding: 40px;
+
+  /* Muted text and dark background box */
+  color: #8b949e;
+  background: #161b22;
+
+  /* Rounded corners and spacing from top */
+  border-radius: 6px;
+  margin-top: 30px;
+}

@@ -1,0 +1,318 @@
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+/* Reset default spacing and define a clean global font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Base body styling for dark mode layout */
+body {
+  /* Dark background with light text for readability */
+  background-color: #0d1117;
+  color: #e6edf3;
+
+  /* Ensure body takes full viewport height */
+  min-height: 100vh;
+
+  /* Use flexbox to structure layout vertically */
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+header {
+  /* Use flexbox to align header items horizontally */
+  display: flex;
+  align-items: center;
+
+  /* Add padding and dark theme background */
+  padding: 1rem;
+  background: #161b22;
+
+  /* Add subtle border for separation */
+  border-bottom: 1px solid #30363d;
+
+  /* Fix header at the top */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  /* Ensure it stays above all content */
+  z-index: 10;
+}
+
+/* Centered header title */
+header h1 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+/* Back button styling */
+.back-btn {
+  background: none;
+  border: none;
+  color: #e6edf3;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+main {
+  /* Allow main content to grow and fill available space */
+  flex: 1;
+
+  /* Arrange elements vertically with space between sections */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Add padding to prevent overlap with fixed header/footer */
+  padding-top: 70px;
+  padding-bottom: 80px;
+}
+
+
+/* ============================================
+   SCROLLABLE FILE LIST
+   ============================================ */
+.files-container {
+  /* Enable vertical scrolling for long lists */
+  flex-grow: 1;
+  overflow-y: auto;
+
+  /* Add padding and spacing between file cards */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* Limit height so it fits between header and footer */
+  max-height: calc(100vh - 150px);
+}
+
+
+/* ============================================
+   FILE CARD STYLES
+   ============================================ */
+.file-card {
+  /* Dark card background and rounded edges */
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+
+  /* Inner spacing and centered layout */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+
+  /* Allow placement of remove button */
+  position: relative;
+}
+
+
+/* ============================================
+   REMOVE BUTTON
+   ============================================ */
+.remove-btn {
+  /* Position button in the top-right corner of each card */
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  /* Green circular button with white text */
+  background: #238636;
+  color: white;
+  border: none;
+  border-radius: 50%;
+
+  /* Fixed size and small font */
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+
+  /* Center icon and add hover transition */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect for remove button */
+.remove-btn:hover {
+  background: #2ea043;
+}
+
+
+/* ============================================
+   IMAGE PREVIEW
+   ============================================ */
+.file-card img.preview {
+  /* Make image responsive within the card */
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+
+  /* Rounded corners and dark background */
+  border-radius: 8px;
+  background: #0d1117;
+  display: block;
+}
+
+
+/* ============================================
+   NON-IMAGE FILE PREVIEW (PLACEHOLDER)
+   ============================================ */
+.placeholder {
+  /* Box dimensions and layout for generic file preview */
+  width: 100%;
+  height: 200px;
+  background: #21262d;
+
+  /* Center content vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Rounded edges and small inner gap */
+  border-radius: 8px;
+  gap: 0.6rem;
+}
+
+/* Label showing file type */
+.placeholder p {
+  /* Set dimensions and spacing */
+  height: 40px;
+  min-width: 40px;
+  margin: 20px;
+
+  /* Center text and apply style */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography and background contrast */
+  color: #161b22;
+  font-size: 20px;
+  border-radius: 5%;
+  width: fit-content;
+  padding-inline: 2px;
+}
+
+/* Remove underline from file link */
+.placeholder a {
+  text-decoration: none;
+}
+
+
+/* ============================================
+   PREVIEW BUTTON
+   ============================================ */
+.preview-btn {
+  /* Styled action button */
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  /* Add subtle animation and remove text underline */
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+/* Hover effect for preview button */
+.preview-btn:hover {
+  background: #2ea043;
+}
+
+
+/* ============================================
+   FILE INFORMATION
+   ============================================ */
+.file-info {
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* File name styling */
+.file-name {
+  font-weight: bold;
+  color: #c9d1d9;
+}
+
+/* File size text styling */
+.file-size {
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+
+/* ============================================
+   EMPTY STATE MESSAGE
+   ============================================ */
+.empty {
+  /* Subtle message when no files are present */
+  color: #8b949e;
+  text-align: center;
+  font-style: italic;
+  padding: 1rem;
+}
+
+
+/* ============================================
+   FOOTER / UPLOAD BUTTON SECTION
+   ============================================ */
+footer {
+  /* Add padding and fixed position at bottom */
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  /* Center contents horizontally */
+  display: flex;
+  justify-content: center;
+
+  /* Apply dark background and top border */
+  background: #161b22;
+  border-top: 1px solid #30363d;
+
+  /* Ensure visibility above other elements */
+  z-index: 10;
+}
+
+/* Upload button styling */
+.upload-btn {
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover effect for upload button */
+.upload-btn:hover {
+  background: #2ea043;
+}
