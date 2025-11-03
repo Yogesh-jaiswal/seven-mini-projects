@@ -1,0 +1,102 @@
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+/* Reset all default spacing and apply a universal font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Base body styling for layout and theme */
+body {
+  /* Occupy full viewport height and set relative positioning */
+  height: 100vh;
+  position: relative;
+
+  /* Apply dark background and light text for contrast */
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+header {
+  /* Use flexbox for centering content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Add inner padding for spacing */
+  padding: 15px 20px;
+
+  /* Apply dark background with a subtle bottom border */
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+
+  /* Fix the header to the top of the page */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  /* Ensure it appears above all other content */
+  z-index: 10;
+}
+
+
+/* ============================================
+   FOOTER SECTION
+   ============================================ */
+footer {
+  /* Use flexbox for horizontal layout and alignment */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Fix the footer to the bottom of the page */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  /* Maintain a minimum height for consistent appearance */
+  min-height: 60px;
+
+  /* Apply dark theme and subtle top border */
+  background: #161b22;
+  border-top: 1px solid #30363d;
+
+  /* Set font size for footer content */
+  font-size: 30px;
+
+  /* Ensure the footer stays above other elements */
+  z-index: 10;
+}
+
+
+/* ============================================
+   FOOTER ICON STYLES
+   ============================================ */
+footer i {
+  /* Set fixed size for each icon container */
+  width: 60px;
+  height: 50px;
+
+  /* Add horizontal spacing between icons */
+  margin: 0 50px;
+
+  /* Round the icon corners slightly */
+  border-radius: 4px;
+
+  /* Center the icon content */
+  text-align: center;
+  padding: 8px;
+
+  /* Apply white color for visibility */
+  color: #fff;
+}
