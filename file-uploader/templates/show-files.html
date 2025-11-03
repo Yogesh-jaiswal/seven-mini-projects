@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+<!-- 
+  This template extends base.html.
+  It displays all uploaded files with preview, download, and delete options.
+-->
+
+{% block extra_css %}
+  <!-- Page-specific stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='show_files_style.css') }}" />
+
+  <!-- Highlight the active footer icon -->
+  <style>
+    .files {
+      background: #0d1117;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    {% if files %}
+      <!-- Table to list all uploaded files -->
+      <table class="table">
+        <tbody>
+          {% for f in files %}
+            <!-- Each row represents one file -->
+            <tr data-filename='{{ f.name }}'>
+              
+              <!-- ========== FILE PREVIEW SECTION ========== -->
+              <td id="file">
+                <div class="file-card">
+                  {% if f.is_image %}
+                    <!-- If file is an image, show a thumbnail -->
+                    <img src="{{ f.path }}" alt="{{ f.name }}" class="preview" />
+                  {% else %}
+                    <!-- Otherwise, show a colored icon or generic placeholder -->
+                    <div class="placeholder">
+                      {% if f.color %}
+                        <!-- Colored box with file type (e.g., PDF, DOC) -->
+                        <p style="background-color: {{ f.color }};"><b>{{ f.type }}</b></p>
+                      {% else %}
+                        <!-- Generic file icon (for unknown file types) -->
+                        <i class="fa-solid fa-file files" style="color: #00BFFF"></i>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </td>
+
+              <!-- ========== FILE NAME & SIZE SECTION ========== -->
+              <td>
+                <a href="{{ f.path }}" class="file-name">
+                  <span>{{ f.name }}</span>
+                  <p>{{ f.size }}</p>
+                </a>
+              </td>
+              
+              <!-- ========== THREE DOT MENU (OPTIONS) ========== -->
+              <td class="options-cell">
+                <div class="dropdown">
+                  <!-- Button to open dropdown menu -->
+                  <button class="dots-btn">⋮</button>
+
+                  <!-- Dropdown menu options -->
+                  <div class="dropdown-menu">
+                    <!-- Delete option -->
+                    <p class="dropdown-item delete">Delete</p>
+
+                    <!-- Download option -->
+                    <a href="{{ f.path }}" class="dropdown-item">Download</a>
+                  </div>
+                </div>
+              </td>
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    {% else %}
+      <!-- When no files exist -->
+      <div class="no-data">
+        <p><b>No Files Found</b></p>
+      </div>
+    {% endif %}
+  </main>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- ================= PAGE-SPECIFIC SCRIPT ================= -->
+  <script>
+    // Handle dropdown (three-dot menu) visibility
+    document.addEventListener("click", function(e) {
+      const isButton = e.target.classList.contains("dots-btn");
+      const dropdowns = document.querySelectorAll(".dropdown-menu");
+    
+      // Close all dropdown menus
+      dropdowns.forEach(menu => menu.style.display = "none");
+    
+      // If a dots button is clicked, open its dropdown menu
+      if (isButton) {
+        const menu = e.target.nextElementSibling;
+        menu.style.display = "block";
+        e.stopPropagation(); // Prevent menu from closing immediately
+      }
+    });
+
+    // Handle file deletion
+    document.querySelectorAll('.delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const row = btn.closest('tr');             // Find the corresponding row
+        const filename = row.dataset.filename;     // Get the filename from data attribute
+
+        // Send delete request to the backend
+        fetch(`/delete_files?filename=${encodeURIComponent(filename)}`)
+          .then(() => {
+            // Remove row visually and refresh to reflect change
+            row.remove();
+            window.location.reload();
+          })
+          .catch(err => console.error("Delete failed:", err));
+      });
+    });
+  </script>
+{% endblock %}

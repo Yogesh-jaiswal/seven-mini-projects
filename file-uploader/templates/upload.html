@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uploaded Files</title>
+
+  <!-- ================= FONT & STYLES ================= -->
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='upload-style.css') }}">
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <!-- Back button: navigates to previous page -->
+    <button class="back-btn" onclick="history.back()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <!-- Page title -->
+    <h1>Files Preview</h1>
+  </header>
+
+  <!-- ================= MAIN FORM ================= -->
+  <!-- Form sends all temporary files to the permanent upload route -->
+  <form id="uploadForm" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+    <main>
+      <!-- Container for all preview file cards -->
+      <div class="files-container" id="filesContainer">
+        
+        {% if files %}
+          <!-- Loop through all temporarily uploaded files -->
+          {% for f in files %}
+            <div class="file-card" data-filename='{{ f.name }}'>
+              
+              <!-- Remove button for deleting individual temp files -->
+              <button class="remove-btn" type="button">&times;</button>
+
+              {% if f.is_image %}
+                <!-- If the file is an image, show image preview -->
+                <img src="{{ f.path }}" alt="{{ f.name }}" class="preview" />
+              {% else %}
+                <!-- Otherwise, display file type placeholder -->
+                <div class="placeholder">
+                  <!-- Colored block with file extension -->
+                  <p style="background-color: {{ f.color }}"><b>{{ f.type }}</b></p>
+                  <!-- Optional preview link for non-image files -->
+                  <a class="preview-btn" href="{{ f.url }}">Preview</a>
+                </div>
+              {% endif %}
+
+              <!-- File information section -->
+              <div class="file-info">
+                <p class="file-name">{{ f.name }}</p>
+                <p class="file-size">{{ f.size }}</p>
+              </div>
+            </div>
+          {% endfor %}
+
+        {% else %}
+          <!-- When no files are selected for preview -->
+          <p class="empty">No files selected</p>
+        {% endif %}
+      </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <!-- Final upload button to move files from TEMP → UPLOADS -->
+      <button type="submit" class="upload-btn">
+        <i class="fa-solid fa-upload"></i> Upload
+      </button>
+    </footer>
+  </form>
+
+  <!-- ================= SCRIPT ================= -->
+  <script>
+    // ---------------------------------------------
+    // 🔹 Delete File from Temporary Folder
+    // ---------------------------------------------
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Find parent .file-card element
+        const card = btn.closest('.file-card');
+        // Extract filename from data attribute
+        const filename = card.dataset.filename;
+
+        // Send request to backend delete route (temp=true)
+        fetch(`/delete_files?filename=${encodeURIComponent(filename)}&temp=true`)
+          .then(() => {
+            // Remove file card visually from page
+            card.remove();
+          })
+          .catch(err => console.error("Delete failed:", err));
+      });
+    });
+
+    // ---------------------------------------------
+    // 🔹 Prevent Back Navigation Issue
+    // ---------------------------------------------
+    // Replaces browser history so user cannot go "back" to this temp preview
+    window.history.replaceState(null, "", "/");
+  </script>
+</body>
+</html>

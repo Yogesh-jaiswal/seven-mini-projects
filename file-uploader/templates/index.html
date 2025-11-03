@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+<!-- 
+  This template extends the base.html layout.
+  It defines extra CSS, body content, and JS for the index (upload) page.
+-->
+
+{% block extra_css %}
+  <!-- Page-specific stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+
+  <!-- Inline style to highlight the active footer icon -->
+  <style>
+    .home {
+      background: #0d1117;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <!-- Upload form -->
+    <form 
+      action="{{ url_for('files_page') }}" 
+      method="POST" 
+      enctype="multipart/form-data"
+    >
+      <!-- Upload box container -->
+      <div class="upload-box">
+        <!-- Upload icon -->
+        <i class="fa fa-upload"></i>
+        
+        <!-- Instructions text -->
+        <p>Drag your file here</p>
+        <span>or</span>
+
+        <!-- Browse button -->
+        <label class="browse-btn">
+          <!-- Hidden input for file selection -->
+          <input 
+            type="file" 
+            name="files" 
+            multiple 
+            hidden 
+            onchange="this.form.submit()"
+          >
+          Browse
+        </label>
+      </div>
+    </form>
+
+    <!-- Toast notification for feedback (success / warning) -->
+    <div class='toast'>
+      <img id='toast-img' src="" alt="">
+      <p id="toast-text"></p>
+      <div id="toast-btn"></div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- ================= PAGE-SPECIFIC SCRIPT ================= -->
+  <script>
+    let category; // stores the flash message category (success/warning)
+
+    // Wait for the DOM to load before running toast logic
+    document.addEventListener("DOMContentLoaded", () => {
+      const toast = document.querySelector(".toast");
+      const toastImg = document.querySelector("#toast-img");
+      const toastTxt = document.querySelector("#toast-text");
+      const toastBtn = document.querySelector("#toast-btn");
+      
+      // Get flash messages (passed from Flask backend)
+      const message = {{ get_flashed_messages(with_categories=true)|tojson }};
+      
+      // Success & warning image URLs
+      const successUrl = "https://media.tenor.com/0cvxil96K7YAAAAm/check.webp";
+      const warningUrl = "{{ url_for('static', filename='warning.gif') }}";
+    
+      // If there's a flash message, show the toast notification
+      if (message && message.length > 0) {
+        const msgData = message[0];  // First message from the flash queue
+        [category, text] = msgData;  // Destructure into category & message text
+    
+        // Add animation + category-specific class
+        toast.classList.add("show", category);
+        
+        // Update toast content
+        toastTxt.innerText = text;
+        toastImg.src = category === "success" ? successUrl : warningUrl;
+        toastImg.alt = category;
+        toastBtn.innerText = category === "success" ? "OK!" : "Retry";
+      }
+    
+      // Hide toast when button is clicked
+      toastBtn.addEventListener("click", removeShow);
+    });
+    
+    // Function to remove the toast visibility classes
+    function removeShow() {
+      const toast = document.querySelector(".toast");
+      toast.classList.remove("show", category);
+    }
+  </script>
+{% endblock %}
