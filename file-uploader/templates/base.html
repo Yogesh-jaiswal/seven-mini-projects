@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding and viewport settings -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page title -->
+  <title>File Upload</title>
+
+  <!-- Main CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+  <!-- Placeholder for page-specific CSS (added by child templates) -->
+  {% block extra_css %}{% endblock %}
+
+  <!-- Font Awesome for icons -->
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <h1>
+      <i class="fa fa-folder"></i> 
+      File Uploader
+    </h1>
+  </header>
+
+  <!-- ================= MAIN BODY CONTENT ================= -->
+  <!-- Content will be injected here by child templates -->
+  {% block body %}{% endblock %}
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <!-- Home button (redirects to the main index route) -->
+    <a href="{{ url_for('index') }}">
+      <i class="fa-solid fa-house home"></i>
+    </a>
+
+    <!-- Files button (redirects to the uploaded files display page) -->
+    <a href="{{ url_for('show_files') }}">
+      <i class="fa-solid fa-file files"></i>
+    </a>
+  </footer>
+
+  <!-- Placeholder for page-specific JavaScript (added by child templates) -->
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
