@@ -82,7 +82,7 @@ def show_files():
 
             file_details.append(file_info)
 
-    return render_template("show_files.html", files=file_details)
+    return render_template("show-files.html", files=file_details)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
