@@ -24,12 +24,13 @@
     <!-- Form that sends data to backend route add_data -->
     <form id="addForm" action="{{ url_for('add') }}" method="POST">
       
-      <!-- Author input (required) -->
+      <!-- Task input (required) -->
       <textarea placeholder="Enter task" id="task" name="task" required></textarea>
       
-      <!-- Quote input (required) -->
+      <!-- Description of task -->
       <textarea placeholder="Enter description (optional)" id="description" name="description"></textarea>
       
+      <!-- Date input -->
       <div class="date-container">
         <h2>Select Due Date (optional)</h2>
         <input type="date" id="task-date" name="date">
