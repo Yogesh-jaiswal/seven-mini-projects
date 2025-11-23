@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playlist Fetcher</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <!-- Main CSS file -->
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  
+  <!-- Extra CSS (added by child templates) -->
+  {% block extra_css %}{% endblock %}
+
+  <!-- Icons stylesheet -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Main page content -->
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>
