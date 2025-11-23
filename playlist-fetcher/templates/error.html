@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <style>
+    /* Error page layout */
+    .error-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      margin-top: -2rem;
+    }
+
+    /* Error icon */
+    .err-icon {
+      width: 130px;
+      height: 130px;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Headings and text */
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+
+    h3 {
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <!-- Top Bar -->
+  <a href="/">
+    <div class="app-bar">
+      <div class="icon">
+        <span class="material-symbols-outlined">playlist_play</span>
+      </div>
+      <h2>Playlist Fetcher</h2>
+    </div>
+  </a>
+  
+  <!-- Error content -->
+  <div class="error-wrapper">
+    <!-- Icon -->
+    <img class="err-icon" src="{{ url_for('static', filename='err-icon.png') }}" alt="err_icon">
+
+    <!-- Error details -->
+    <h1>{{ data["code"] }}</h1>
+    <h3>{{ data["error"] }}</h3>
+    <p>{{ data["description"] }}</p>
+  </div>
+{% endblock %}

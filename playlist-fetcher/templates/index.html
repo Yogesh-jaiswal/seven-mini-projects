@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <!-- Page-specific CSS -->
+  <link href="{{ url_for('static', filename='index-style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <!-- Header -->
+  <a href="/">
+    <div class="app-bar">
+      <div class="icon">
+        <span class="material-symbols-outlined">playlist_play</span>
+      </div>
+      <h2>Playlist Fetcher</h2>
+    </div>
+  </a>
+  
+  <main>
+    <h1>Fetch Playlist</h1>
+    <p>Paste the playlist URL you want to fetch.</p>
+  
+    <!-- URL Input Form -->
+    <form action="{{ url_for('add_playlist') }}" method="POST">
+      <label>
+        <p>YouTube Playlist URL</p>
+        <div class="input-group">
+          <div class="input-icon">
+            <span class="material-symbols-outlined">link</span>
+          </div>
+          <input type="text" name="url" placeholder="Paste URL here" required />
+        </div>
+      </label>
+  
+      <!-- Submit Button -->
+      <button class="fetch-btn" type="submit">Fetch Playlist</button>
+    </form>
+  
+    <!-- Line Divider -->
+    <div class="divider"></div>
+  
+    <!-- Show Saved Playlists -->
+    {% if playlists %}
+      {% for playlist in playlists %}
+        <div class="playlist-item">
+          
+          <!-- Click to open playlist page -->
+          <a class="playlist-link" href="{{ url_for('show_playlist', playlist_id=playlist['playlist_id']) }}">
+            <div class="img" style="background-image: url('{{ playlist['thumbnail'] }}');">
+              <div class="badge">
+                <span class="material-symbols-outlined">playlist_play</span>
+                <h4>{{ playlist["video_count"] }}</h4>
+              </div>
+            </div>
+
+            <div class="playlist-info">
+              <h4>{{ playlist["title"] }}</h4>
+              <p>{{ playlist["channel"] }}</p>
+            </div>
+          </a>
+
+          <!-- Delete button -->
+          <div class="delete">
+            <a href="/delete/{{ playlist['playlist_id'] }}">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+    {% else %}
+
+      <!-- Empty state -->
+      <div class="empty-state">
+        <div class="empty-icon">
+          <span class="material-symbols-outlined">video_library</span>
+        </div>
+        <h3>Your playlist will appear here</h3>
+        <p>Paste a link and tap "Fetch Playlist".</p>
+      </div>
+
+    {% endif %}
+  </main>
+{% endblock %}

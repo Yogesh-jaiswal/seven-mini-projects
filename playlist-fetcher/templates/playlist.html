@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <!-- Page CSS -->
+  <link href="{{ url_for('static', filename='playlist-style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <!-- Top Bar -->
+  <div class="app-bar">
+    
+    <!-- Back button -->
+    <div class="icon">
+      <a href="/back?go_home=true">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+    </div>
+
+    <!-- App title -->
+    <h2><a href="/">Playlist Fetcher</a></h2>
+
+    <!-- Refresh playlist -->
+    <div class="restart">
+      <a href="/playlist/{{ videos[0]['playlist_id'] }}/refresh">
+        <i class="fa-solid fa-arrow-rotate-right"></i>
+      </a>
+    </div>
+
+  </div>
+  
+  <main>
+    <!-- Loop through videos -->
+    {% for video in videos %}
+      <div class="video-item">
+
+        <!-- Open video page -->
+        <a class="video-link" 
+           href="/video/{{ video['vid_id'] }}?playlist_id={{ video['playlist_id'] }}">
+          
+          <!-- Thumbnail -->
+          <img src="{{ video['thumbnail'] }}" alt="">
+
+          <!-- Text info -->
+          <div class="video-info">
+            <h4>{{ video["title"] }}</h4>
+            <p>{{ video["channel"] }}</p>
+          </div>
+        </a>
+
+      </div>
+    {% endfor %}
+  </main>
+{% endblock %}
