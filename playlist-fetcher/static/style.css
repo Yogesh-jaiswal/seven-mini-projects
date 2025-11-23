@@ -1,0 +1,136 @@
+/* Theme colors */
+:root {
+  --background-light: #f6f7f8;
+  --background-dark: #101922;
+  --text-light: #ffffff;
+  --text-dark: #1e1e1e;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: "Spline Sans", sans-serif;
+  min-height: 100vh;
+  background-color: var(--background-light);
+  color: #1e1e1e;
+}
+
+/* Dark mode body */
+.dark body {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Center container (mobile layout) */
+.container {
+  position: relative;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-light);
+  overflow-x: hidden;
+}
+
+/* Dark mode container */
+.dark .container {
+  background-color: var(--background-dark);
+}
+
+/* Top bar */
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--background-light);
+}
+
+/* Dark mode top bar */
+.dark .app-bar {
+  background-color: var(--background-dark);
+}
+
+/* Left icon area */
+.app-bar .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+/* Title text */
+.app-bar h2 {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #1e1e1e;
+  padding-right: 3rem;
+}
+
+/* Title in dark mode */
+.dark .app-bar h2 {
+  color: #fff;
+}
+
+/* Main content area */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-top: 1.5rem;
+}
+
+/* Main heading */
+main h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin-bottom: 0.25rem;
+}
+
+/* Heading in dark mode */
+.dark main h1 {
+  color: var(--text-light);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+/* Links in dark mode */
+.dark a {
+  color: var(--text-light);
+}
+
+/* Google Material Icons */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  font-size: 1.75rem;
+}
