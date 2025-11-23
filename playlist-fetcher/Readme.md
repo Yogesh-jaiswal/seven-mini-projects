@@ -22,18 +22,19 @@ It allows users to **fetch**, **manage**, and **view playlists and videos** easi
 
 ## 📂 Project Structure
 📦 File uploader App  
-┣ 📜 app.py            # Flask backend  
-┣ 📜 templates/  
-┃ ┣ 📜 base.html       # Base html layout
-┃ ┣ 📜 index.html      # Home page  
-┃ ┣ 📜 playlist.html   # Playlist content page
-┃ ┗ 📜 video.html      # Video content page
-┃ ┗ 📜 error.html      # Error handler page
-┣ 📜 static/  
-┃ ┣ 📜 style.css       # Styles for base html
-┃ ┣ 📜 index-style.css # Styles for home page  
-┃ ┣ 📜 playlist-style.css # Styles for playlist content page
-┗ 📜 README.md         # Project documentation  
+┣ 📜 app.py            # Flask backend <br>
+┣ 📜 youtube.db        # SQLlite DB for metadata <br>
+┣ 📜 templates/ <br>
+┃ ┣ 📜 base.html       # Base html layout <br>
+┃ ┣ 📜 index.html      # Home page <br>
+┃ ┣ 📜 playlist.html   # Playlist content page <br>
+┃ ┗ 📜 video.html      # Video content page <br>
+┃ ┗ 📜 error.html      # Error handler page <br>
+┣ 📜 static/ <br>
+┃ ┣ 📜 style.css       # Styles for base html <br>
+┃ ┣ 📜 index-style.css # Styles for home page <br>
+┃ ┣ 📜 playlist-style.css # Styles for playlist content page <br>
+┗ 📜 README.md         # Project documentation
 
 ---
 
