@@ -11,7 +11,7 @@ import hashlib
 # Global Configuration
 # ===============================
 
-API_KEY = "API_KEY"   # YouTube API key
+API_KEY = "YOUR_API_KEY"   # YouTube API key
 DB = "youtube.db"        # SQLite database file name
 
 app = Flask(__name__)
