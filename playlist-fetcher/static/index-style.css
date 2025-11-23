@@ -1,0 +1,259 @@
+/* Color variables */
+:root {
+  --primary: #2b8cee;
+  --background-light: #f6f7f8;
+  --background-dark: #101922;
+  --text-light: #ffffff;
+  --text-dark: #1e1e1e;
+}
+
+/* Body height fix for mobile */
+body {
+  min-height: max(884px, 100dvh);
+}
+
+/* Main text */
+main p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.dark main p {
+  color: #aaa;
+}
+
+/* Input section label */
+label p {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.dark label p {
+  color: var(--text-light);
+}
+
+/* Input wrapper */
+.input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Icon box in input */
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  border: 1px solid #ccc;
+  border-right: none;
+  padding: 0 0.8rem;
+  border-radius: 8px 0 0 8px;
+  color: #666;
+}
+
+.dark .input-icon {
+  background: #2e2e2e;
+  border-color: #555;
+  color: #ccc;
+}
+
+/* Input field */
+input {
+  flex: 1;
+  border: 1px solid #ccc;
+  background: #e5e7eb;
+  border-radius: 0 8px 8px 0;
+  padding: 0 1rem;
+  font-size: 1rem;
+  height: 56px;
+  color: var(--text-dark);
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+/* Input focus effect */
+input:focus {
+  border-color: var(--primary);
+  background: var(--text-light);
+}
+
+.dark input {
+  background: #2e2e2e;
+  border-color: #555;
+  color: var(--text-light);
+}
+
+/* Fetch button */
+.fetch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  margin-top: 1rem;
+  background: var(--primary);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.fetch-btn:hover {
+  background: #1f7ad8;
+}
+
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 2rem 0;
+}
+
+.dark .divider {
+  background: #333;
+}
+
+/* Empty state container */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 0;
+  flex: 1;
+}
+
+/* Empty icon */
+.empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(43, 140, 238, 0.1);
+  margin-bottom: 1rem;
+}
+
+.empty-icon span {
+  color: var(--primary);
+  font-size: 2.5rem;
+}
+
+/* Empty heading */
+.empty-state h3 {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Empty text */
+.empty-state p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  max-width: 260px;
+}
+
+.dark .empty-state h3 {
+  color: var(--text-light);
+}
+
+.dark .empty-state p {
+  color: #aaa;
+}
+
+/* Playlist card */
+.playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.dark .playlist-item {
+  background: rgba(60, 60, 60, 0.5);
+}
+
+/* Playlist thumbnail */
+.playlist-item .img {
+  width: 135px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+  position: relative;
+}
+
+/* Playlist badge (video count) */
+.playlist-item .badge {
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  background-color: rgba(51, 51, 51, 0.8);
+  border-radius: 5px;
+  bottom: 2.5px;
+  right: 2.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  font-size: 0.9rem;
+}
+
+.badge span {
+  font-size: 1.25rem;
+}
+
+/* Playlist info link area */
+.playlist-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+/* Playlist title */
+.playlist-info h4 {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-dark);
+  width: 45vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dark .playlist-info h4 {
+  color: var(--text-light);
+}
+
+/* Playlist channel name */
+.playlist-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.dark .playlist-info p {
+  color: #aaa;
+}
+
+/* Delete button */
+.playlist-item .delete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

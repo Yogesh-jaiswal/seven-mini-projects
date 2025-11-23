@@ -1,0 +1,77 @@
+:root {
+  /* theme colors */
+  --background-light: #f6f7f8;
+  --background-dark: #101922;
+  --text-light: #ffffff;
+  --text-dark: #1e1e1e;
+}
+
+/* reload icon size */
+.restart{
+  --restart-size: 35px;
+  width: var(--restart-size);
+  height: var(--restart-size);
+  line-height: 1.9rem;
+}
+
+/* each video item card */
+.video-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+/* dark mode video card */
+.dark .video-item {
+  background: rgba(60, 60, 60, 0.5);
+}
+  
+/* clickable link wrapper */
+.video-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+  
+/* thumbnail */
+.video-item img {
+  width: 135px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* video title */
+.video-info h4 {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-dark);
+
+  /* hide overflow text */
+  width: 45vw;
+  white-space: nowrap;
+  overflow: hidden;    
+  text-overflow: ellipsis;
+}
+
+/* dark mode title */
+.dark .video-info h4 {
+  color: var(--text-light);
+}
+
+/* channel name or small text */
+.video-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* dark mode text */
+.dark .video-info p {
+  color: #aaa;
+}
