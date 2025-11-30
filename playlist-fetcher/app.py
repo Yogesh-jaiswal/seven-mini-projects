@@ -28,9 +28,12 @@ def run_query(query, params=None, commit=False):
     - For INSERT/UPDATE/DELETE → commit=True and returns True
     - On error → returns None
     """
-    conn = sqlite3.connect(DB)
-    conn.row_factory = sqlite3.Row
-    cur = conn.cursor()
+    conn = sqlite3.connect(DB)  
+    conn.row_factory = sqlite3.Row  
+    
+    # turn on foreign key to manage relations
+    conn.execute("PRAGMA foreign_keys = ON;")
+    cur = conn.cursor()  
 
     if params:
         cur.execute(query, params)
