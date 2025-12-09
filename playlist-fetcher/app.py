@@ -89,10 +89,8 @@ def init_db():
         );
     """)
 
-    # Indexes to improve performance
-    c.execute("CREATE INDEX IF NOT EXISTS play_id_idx ON playlist(playlist_id, hash);")
-    c.execute("CREATE INDEX IF NOT EXISTS vid_id_and_hash_idx ON video(vid_id, hash);")
-
+    # Index to improve performance
+    c.execute("CREATE INDEX IF NOT EXISTS video_playlist_idx ON video(playlist_id, idx_in_playlist);")
     conn.commit()
     conn.close()
 
