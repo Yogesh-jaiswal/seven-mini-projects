@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic document metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Summarizer</title>
+
+  <!-- Google Fonts & Material Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
+
+  <!-- Global application styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+  <!-- Page-specific CSS injection -->
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+  <div class="app">
+    <!-- Main content area (overridden by child templates) -->
+    {% block body %}{% endblock %}
+
+    <!-- Snackbar notification -->
+    <div id="snackbar" role="status">
+      <img id="snackbar-img" src="" alt="icon" />
+      <span id="snackbar-message">This is a snackbar</span>
+      <span class="material-symbols-outlined closebar">close</span>
+    </div>
+  </div>
+
+  <!-- Shared utility functions -->
+  <script src="{{ url_for('static', filename='utility.js') }}"></script>
+
+  <!-- Page-specific JavaScript injection -->
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
