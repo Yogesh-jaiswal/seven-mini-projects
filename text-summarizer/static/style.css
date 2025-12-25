@@ -1,0 +1,180 @@
+/* --------------------
+   CSS VARIABLES
+-------------------- */
+:root {
+  /* Brand & surface colors */
+  --primary: #3e6dee;
+  --bg-main: #f4f6fb;
+  --surface: #ffffff;
+  --surface-soft: #f0f3fa;
+  --border: #e5e7ef;
+
+  /* Text colors */
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  /* Border radius scale */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* Global box model reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Base page layout */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+}
+
+/* Text selection highlight */
+::selection {
+  background: rgba(79, 124, 255, 0.2);
+}
+
+/* --------------------
+   APP CONTAINER
+-------------------- */
+.app {
+  /* Mobile-first centered layout */
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background: var(--surface);
+
+  /* Subtle app frame */
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------
+   HEADER
+-------------------- */
+header {
+  /* Sticky top navigation */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  padding: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* --------------------
+   SNACKBAR
+-------------------- */
+#snackbar {
+  /* Centered floating notification */
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: 280px;
+  max-width: 90%;
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  background: #2c2c2c;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  /* Hidden by default */
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Snackbar text container */
+#snackbar-message {
+  flex: 1;
+}
+
+/* Snackbar icon */
+#snackbar-img {
+  width: 20px;
+}
+
+/* Snackbar close button */
+#snackbar .closebar {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px;
+}
+
+#snackbar .closebar:hover {
+  color: #ffffff;
+}
+
+/* Visible snackbar state */
+#snackbar.active {
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  animation: fadein 0.3s, fadeout 0.3s 2.7s;
+}
+
+/* Error snackbar variant */
+#snackbar.error {
+  background: #eac6c6;
+  color: #7b0918;
+}
+
+#snackbar.error .closebar {
+  color: #7b0918;
+}
+
+/* Snackbar enter animation */
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+/* Snackbar exit animation */
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
