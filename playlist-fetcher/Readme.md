@@ -61,6 +61,7 @@ It allows users to **fetch**, **manage**, and **view playlists and videos** easi
    pip install flask
    ```
 3. Paste your **Youtube API key** in app.py.
+   
 4. Run the Flask app:
    ```bash
    python app.py
@@ -78,6 +79,7 @@ It allows users to **fetch**, **manage**, and **view playlists and videos** easi
 - HTML5
 - CSS3 (Flexbox for mobile UI)
 - JavaScript (Vanilla JS)
+- Youtube Data API
 
 ---
 
@@ -91,6 +93,6 @@ It allows users to **fetch**, **manage**, and **view playlists and videos** easi
 
 ## 👨‍💻 Author
 
-Developed by Yogesh Jaiswal as a small project for learning and practicing Flask + front-end development.
+Developed by Yogesh Jaiswal as a small project for learning and practicing Flask, front-end development and youtube API integration.
 
 ---
