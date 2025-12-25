@@ -1,0 +1,325 @@
+/* --------------------
+   CSS VARIABLES
+-------------------- */
+:root {
+  /* Brand & surface colors */
+  --primary: #3e6dee;
+  --bg-main: #f4f6fb;
+  --surface: #ffffff;
+  --surface-soft: #f0f3fa;
+  --border: #e5e7ef;
+
+  /* Text colors */
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  /* Border radius scale */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* --------------------
+   HEADER
+-------------------- */
+header {
+  /* Distribute title and library button */
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+}
+
+/* Icon-only action button */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--surface-soft);
+  color: var(--text-main);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: rgba(79, 124, 255, 0.15);
+  color: var(--primary);
+}
+
+/* --------------------
+   MAIN
+-------------------- */
+main {
+  flex: 1;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------
+   TEXTAREA
+-------------------- */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Primary text input */
+textarea {
+  width: 100%;
+  min-height: 200px;
+  resize: none;
+
+  border-radius: var(--radius-md);
+  padding: 1rem;
+
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: inherit;
+
+  background: var(--surface);
+  border: 2px solid #000;
+}
+
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Focus state */
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+}
+
+/* Character counter badge */
+.char-count {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+
+  font-size: 0.75rem;
+  color: var(--text-muted);
+
+  background: var(--surface-soft);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* ------------------------
+   Exceeded character limit
+------------------------ */
+textarea.limit-exceeded {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.char-count.danger {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* --------------------
+   PRIMARY BUTTON
+-------------------- */
+.primary-btn {
+  height: 52px;
+  border-radius: var(--radius-full);
+  border: none;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  box-shadow: 0 8px 20px rgba(79, 124, 255, 0.25);
+  border: 1px solid #000;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  background: #4f7cff;
+}
+
+.primary-btn:disabled {
+  background: #c7cbd6;
+  color: #6b7280;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --------------------
+   DIVIDER
+-------------------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+/* Divider lines */
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Summary header layout */
+#summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --------------------
+   TOOLBAR
+-------------------- */
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+
+  padding: 5px;
+  border-radius: 20px;
+}
+
+/* Toolbar buttons */
+.toolbar button {
+  background: var(--surface-soft);
+  border-radius: var(--radius-full);
+  border: none;
+  padding: 0.75rem;
+
+  text-align: center;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background: rgba(79, 124, 255, 0.15);
+  color: var(--primary);
+}
+
+.toolbar button:disabled {
+  background: #c7cbd6;
+  color: #6b7280;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --------------------
+   SKELETON LOADER
+-------------------- */
+.skeleton-box {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Animated placeholder bars */
+.skeleton-bar {
+  height: 18px;
+  width: 100%;
+  margin-bottom: 10px;
+
+  background: linear-gradient(
+    -90deg,
+    #e5e5e5,
+    #f6f7f8,
+    #e5e5e5
+  );
+  background-size: 400% 400%;
+  border-radius: 6px;
+
+  animation: pulse 1.4s ease infinite;
+}
+
+.skeleton-bar.short {
+  width: 60%;
+}
+
+/* Skeleton shimmer animation */
+@keyframes pulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -135% 50%;
+  }
+}
+
+/* --------------------
+   SUMMARY
+-------------------- */
+h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Status / metadata badge */
+.badge {
+  font-size: 0.75rem;
+  color: var(--primary);
+  background: rgba(79, 124, 255, 0.12);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+/* Summary content card */
+.summary-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1rem;
+
+  border: 2px solid #000;
+}
+
+.summary-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* Utility class for visibility toggling */
+.hidden {
+  display: none;
+}

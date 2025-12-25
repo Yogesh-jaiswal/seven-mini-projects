@@ -1,0 +1,219 @@
+/* --------------------
+   CSS VARIABLES
+-------------------- */
+:root {
+  /* Brand & surface colors */
+  --primary: #3e6dee;
+  --bg-main: #f4f6fb;
+  --surface: #ffffff;
+  --surface-soft: #f0f3fa;
+  --border: #e5e7ef;
+
+  /* Text colors */
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  /* Border radius scale */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* --------------------
+   HEADER
+-------------------- */
+header {
+  /* Centered title with absolute back button */
+  justify-content: center;
+}
+
+/* Back navigation icon */
+.back {
+  position: absolute;
+  left: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+}
+
+/* --------------------
+   MAIN
+-------------------- */
+main {
+  flex: 1;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------
+   EMPTY STATE
+-------------------- */
+#empty {
+  /* Centered placeholder when no data exists */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#empty span {
+  font-size: 3rem;
+}
+
+/* --------------------
+   SAVED DATA
+-------------------- */
+#saved-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Individual saved summary */
+.saved-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+
+  border: 2px solid #000;
+}
+
+/* --------------------
+   TOOLBAR
+-------------------- */
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+/* Toolbar action buttons */
+.toolbar button {
+  border: none;
+  border-radius: 50%;
+  padding: 0.4rem;
+
+  background: transparent;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.toolbar button:hover {
+  background: rgba(79, 124, 255, 0.15);
+  color: var(--primary);
+}
+
+/* Destructive action feedback */
+.toolbar .danger:hover {
+  background: #eac6c6;
+  color: #e00;
+}
+
+/* --------------------
+   CONTENT
+-------------------- */
+.content-card {
+  margin: 0;
+  padding: 0.75rem;
+
+  background: var(--surface-soft);
+  border-radius: var(--radius-md);
+
+  line-height: 1.5;
+  text-align: left;
+  font-weight: 400;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Summary text container */
+.content {
+  line-height: 1.5;
+  color: #000;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: max-height 0.3s ease;
+}
+
+/* Collapsed summary preview */
+.content.collapsed {
+  max-height: 150px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* Content divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #999;
+  margin: 8px 0;
+}
+
+/* Expand / collapse toggle */
+.toggle {
+  width: 100%;
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+/* Toggle arrow icon */
+.toggle .icon {
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+/* Expanded state */
+.toggle.expanded .icon {
+  transform: rotate(180deg);
+}
+
+/* Toggle label text */
+.toggle .label::after {
+  content: "Show More";
+}
+
+.toggle.expanded .label::after {
+  content: "Show Less";
+}
