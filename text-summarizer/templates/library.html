@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <!-- Styles specific to the library page -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='library-style.css') }}"
+  />
+{% endblock %}
+
+{% block body %}
+  <!-- Library header -->
+  <header>
+    <!-- Navigate back to previous page -->
+    <span
+      class="material-symbols-outlined back"
+      onclick="history.back()"
+    >
+      arrow_back
+    </span>
+
+    <span class="material-symbols-outlined">folder_open</span>
+    <h1>Library</h1>
+  </header>
+
+  <!-- Saved summaries content -->
+  <main>
+    {% if summaries %}
+      <!-- List of saved summaries -->
+      <div id="saved-data">
+        {% for summary in summaries %}
+          <div class="saved-item" data-id="{{ summary['id'] }}">
+            <!-- Action toolbar -->
+            <div class="toolbar">
+              <button class="material-symbols-outlined copy">
+                content_copy
+              </button>
+              <button class="material-symbols-outlined download">
+                download
+              </button>
+              <button class="material-symbols-outlined danger delete">
+                delete
+              </button>
+            </div>
+
+            <!-- Summary content card -->
+            <div class="content-card">
+              <div class="content">
+                {{ summary["summary"] }}
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- Expand / collapse toggle -->
+              <div class="toggle">
+                <span class="material-symbols-outlined icon">
+                  keyboard_double_arrow_down
+                </span>
+                <span class="label"></span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Empty library state -->
+      <div id="empty">
+        <span class="material-symbols-outlined">
+          sentiment_satisfied
+        </span>
+        <p>No Summaries Saved!</p>
+      </div>
+    {% endif %}
+  </main>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- Page-specific JavaScript -->
+  <script src="{{ url_for('static', filename='library-script.js') }}"></script>
+{% endblock %}

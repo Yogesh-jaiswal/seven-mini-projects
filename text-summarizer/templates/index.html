@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <!-- Styles specific to the index (summarizer) page -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='index-style.css') }}"
+  />
+{% endblock %}
+
+{% block body %}
+  <!-- Application header -->
+  <header>
+    <h1>Text Summarizer</h1>
+
+    <!-- Link to saved summaries library -->
+    <a href="/library" target="_self">
+      <button class="icon-btn">
+        <span class="material-symbols-outlined">folder_open</span>
+      </button>
+    </a>
+  </header>
+
+  <!-- Main summarization interface -->
+  <main>
+    <!-- Text input area with character counter -->
+    <div class="input-wrapper">
+      <textarea placeholder="Enter your text..."></textarea>
+      <div class="char-count">0 / 5000</div>
+    </div>
+
+    <!-- Trigger text summarization -->
+    <button class="primary-btn">
+      <span class="material-symbols-outlined">auto_awesome</span>
+      Summarize Text
+    </button>
+
+    <!-- Result section divider -->
+    <div class="divider">RESULT</div>
+
+    <!-- Summary output section -->
+    <div>
+      <!-- Summary header with action toolbar -->
+      <div id="summary-header">
+        <h2>Summary</h2>
+
+        <!-- Summary actions -->
+        <div class="toolbar">
+          <button class="material-symbols-outlined copy">content_copy</button>
+          <button class="material-symbols-outlined save">bookmark_border</button>
+          <button class="material-symbols-outlined download">download</button>
+        </div>
+      </div>
+
+      <!-- Loading skeleton (shown during API request) -->
+      <div class="skeleton-box hidden">
+        <div class="skeleton-bar"></div>
+        <div class="skeleton-bar"></div>
+        <div class="skeleton-bar"></div>
+        <div class="skeleton-bar"></div>
+        <div class="skeleton-bar short"></div>
+      </div>
+
+      <!-- Generated summary container -->
+      <div class="summary-card hidden">
+        <p></p>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- Page-specific JavaScript -->
+  <script src="{{ url_for('static', filename='index-script.js') }}"></script>
+{% endblock %}
