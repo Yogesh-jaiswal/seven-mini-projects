@@ -80,6 +80,6 @@ It allows users to **upload**, **view**, and **manage files** easily.
 
 ## 👨‍💻 Author
 
-Developed by Yogesh Jaiswal as a small project for learning and practicing Flask + front-end development.
+Developed by Yogesh Jaiswal as a small project for learning and practicing Flask, front-end development and file handling.
 
 ---
